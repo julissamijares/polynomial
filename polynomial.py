@@ -39,7 +39,12 @@ class Mul:
         if isinstance(self.p2, Add):
             return repr(self.p1) + " * ( " + repr(self.p2) + " )"
         return repr(self.p1) + " * " + repr(self.p2)
+    
+    def evaluate(self, value):
+        return self.p1.evaluate(value) * self.p2.evaluate(value)
+
 
 
 poly = Add( Add( Int(4), Int(3)), Add( X(), Mul( Int(1), Add( Mul(X(), X()), Int(1)))))
 print(poly)
+print(poly.evaluate(-1))
